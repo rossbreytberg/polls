@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Question:</b>
+  <%= @poll.question %>
+</p>
+
+<p>
+  <b>Option 1:</b>
+  <%= @poll.option_1 %>
+</p>
+
+<p>
+  <b>Option 2:</b>
+  <%= @poll.option_2 %>
+</p>
+
+<p>
+  <b>Option 1 count:</b>
+  <%= @poll.option_1_count %>
+</p>
+
+<p>
+  <b>Option 2 count:</b>
+  <%= @poll.option_2_count %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @poll.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_poll_path(@poll) %> |
+<%= link_to 'Back', polls_path %>
