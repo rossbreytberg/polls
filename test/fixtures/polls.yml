@@ -1,17 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  question: MyString
-  option_1: MyString
-  option_2: MyString
-  option_1_count: 1
-  option_2_count: 1
+  question: MyText
+  content: MyText
   user_id: 1
 
 two:
-  question: MyString
-  option_1: MyString
-  option_2: MyString
-  option_1_count: 1
-  option_2_count: 1
+  question: MyText
+  content: MyText
   user_id: 1

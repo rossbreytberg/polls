@@ -1,19 +1,18 @@
 Polls::Application.routes.draw do
+  resources :polls
+
+
   resources :users
 
   resources :sessions, only: [:new, :create, :destroy]
-
-  resources :polls
-
-  resources :votes
-
-  root :to => 'polls#index'
 
   match :signup, to: 'users#new'
 
   match :signin, to: 'sessions#new'
 
   match :signout, to: 'sessions#destroy', via: :delete
+
+  root :to => 'polls#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -3,10 +3,7 @@
 <table>
   <tr>
     <th>Question</th>
-    <th>Option 1</th>
-    <th>Option 2</th>
-    <th>Option 1 count</th>
-    <th>Option 2 count</th>
+    <th>Content</th>
     <th>User</th>
     <th></th>
     <th></th>
@@ -16,10 +13,7 @@
 <% @polls.each do |poll| %>
   <tr>
     <td><%= poll.question %></td>
-    <td><%= poll.option_1 %></td>
-    <td><%= poll.option_2 %></td>
-    <td><%= poll.option_1_count %></td>
-    <td><%= poll.option_2_count %></td>
+    <td><%= poll.content %></td>
     <td><%= poll.user_id %></td>
     <td><%= link_to 'Show', poll %></td>
     <td><%= link_to 'Edit', edit_poll_path(poll) %></td>

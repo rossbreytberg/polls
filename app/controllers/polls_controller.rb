@@ -24,8 +24,11 @@ class PollsController < ApplicationController
   # GET /polls/new
   # GET /polls/new.json
   def new
-    @poll = Poll.new
-
+    if signed_in?
+      @poll = Poll.new(user_id: current_user.id)
+    else
+      @poll = Poll.new
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @poll }
@@ -41,7 +44,11 @@ class PollsController < ApplicationController
   # POST /polls.json
   def create
     @poll = Poll.new(params[:poll])
-
+    if signed_in?
+      @poll.user_id = current_user.id
+    else
+      @poll.user_id = nil
+    end
     respond_to do |format|
       if @poll.save
         format.html { redirect_to @poll, notice: 'Poll was successfully created.' }

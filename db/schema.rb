@@ -11,17 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127053432) do
+ActiveRecord::Schema.define(:version => 20130130042704) do
 
-  create_table "polls", :force => true do |t|
-    t.string   "question"
-    t.string   "option_1"
-    t.string   "option_2"
-    t.integer  "option_1_count"
-    t.integer  "option_2_count"
+  create_table "poll_options", :force => true do |t|
+    t.text     "label"
+    t.integer  "poll_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "poll_votes", :force => true do |t|
+    t.integer  "poll_option_id"
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  add_index "poll_votes", ["poll_option_id", "user_id"], :name => "index_poll_votes_on_poll_option_id_and_user_id", :unique => true
+
+  create_table "polls", :force => true do |t|
+    t.text     "question"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -35,13 +48,5 @@ ActiveRecord::Schema.define(:version => 20130127053432) do
 
   add_index "users", ["name"], :name => "index_users_on_name"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-
-  create_table "votes", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "poll_id"
-    t.integer  "option"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end
