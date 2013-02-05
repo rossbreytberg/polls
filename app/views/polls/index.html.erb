@@ -3,19 +3,15 @@
 <table>
   <tr>
     <th>Question</th>
-    <th>Content</th>
     <th>User</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @polls.each do |poll| %>
   <tr>
-    <td><%= poll.question %></td>
-    <td><%= poll.content %></td>
-    <td><%= poll.user_id %></td>
-    <td><%= link_to 'Show', poll %></td>
+    <td><%= link_to poll.question, poll %></td>
+    <td><%= poll.user.name %></td>
     <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
     <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

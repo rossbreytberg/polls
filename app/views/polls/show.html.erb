@@ -15,6 +15,12 @@
   <%= @poll.user_id %>
 </p>
 
+<% @poll.poll_options.each do |poll_option| %>
+  <p>
+    <%= poll_option.label %>
+  </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_poll_path(@poll) %> |
 <%= link_to 'Back', polls_path %>

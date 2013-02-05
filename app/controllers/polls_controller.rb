@@ -26,6 +26,7 @@ class PollsController < ApplicationController
   def new
     if signed_in?
       @poll = Poll.new(user_id: current_user.id)
+      2.times { @poll.poll_options.build }
     else
       @poll = Poll.new
     end
