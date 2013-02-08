@@ -14,7 +14,11 @@ class PollsController < ApplicationController
   # GET /polls/1.json
   def show
     @poll = Poll.find(params[:id])
-
+    if signed_in?
+      @poll_vote = PollVote.find_or_create_by_poll_id_and_user_id(params[:id], current_user.id)
+    else
+      @poll_vote = PollVote.new
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @poll }
@@ -27,12 +31,12 @@ class PollsController < ApplicationController
     if signed_in?
       @poll = Poll.new(user_id: current_user.id)
       2.times { @poll.poll_options.build }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @poll }
+      end
     else
-      @poll = Poll.new
-    end
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @poll }
+      redirect_to "/signin"
     end
   end
 
@@ -65,7 +69,6 @@ class PollsController < ApplicationController
   # PUT /polls/1.json
   def update
     @poll = Poll.find(params[:id])
-
     respond_to do |format|
       if @poll.update_attributes(params[:poll])
         format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
@@ -88,4 +91,5 @@ class PollsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

@@ -1,6 +1,7 @@
 Polls::Application.routes.draw do
   resources :polls
 
+  resources :poll_votes
 
   resources :users
 

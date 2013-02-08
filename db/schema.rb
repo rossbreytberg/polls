@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(:version => 20130130042704) do
   end
 
   create_table "poll_votes", :force => true do |t|
+    t.integer  "poll_id"
     t.integer  "poll_option_id"
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "poll_votes", ["poll_option_id", "user_id"], :name => "index_poll_votes_on_poll_option_id_and_user_id", :unique => true
+  add_index "poll_votes", ["poll_id", "user_id"], :name => "index_poll_votes_on_poll_id_and_user_id", :unique => true
 
   create_table "polls", :force => true do |t|
     t.text     "question"

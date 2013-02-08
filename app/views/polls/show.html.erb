@@ -12,13 +12,30 @@
 
 <p>
   <b>User:</b>
-  <%= @poll.user_id %>
+  <%= @poll.user.name %>
 </p>
 
-<% @poll.poll_options.each do |poll_option| %>
-  <p>
-    <%= poll_option.label %>
-  </p>
+<%= form_for(@poll_vote) do |f| %>
+  <% if @poll_vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@poll_vote.errors.count, "error") %> prohibited this poll_vote from being saved:</h2>
+
+      <ul>
+      <% @poll_vote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :poll_option_id %>
+  <% @poll.poll_options.each do |poll_option| %>
+    <p>
+      <%= f.radio_button :poll_option_id, poll_option.id %><%= poll_option.label %> (<%= poll_option.poll_votes.size %>)
+    </p>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
 
 

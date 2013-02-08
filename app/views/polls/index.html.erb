@@ -19,5 +19,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Poll', new_poll_path %>
+<% if signed_in? %>
+  <%= link_to 'New Poll', new_poll_path %>
+<% end %>
