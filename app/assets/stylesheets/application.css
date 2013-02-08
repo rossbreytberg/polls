@@ -13,11 +13,11 @@
  */
 
  header {
- 	background: #ccc;
+ 	background: #fff;
+  border-bottom: solid 1px #333;
  }
 
-#title {
-  color: teal;
-  font-size: 24px;
-  font-weight: bold;
+#logo {
+  width: 100px;
+  height: auto;
 }
