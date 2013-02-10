@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation
-  before_save :create_remember_token
+  before_create :create_remember_token
   validates :name, uniqueness: { case_sensitive: false, message: "already in use." }
   has_many :polls
   has_many :poll_votes

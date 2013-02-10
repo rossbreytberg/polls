@@ -3,6 +3,7 @@
   <nav>
     <% if signed_in? %>
       Welcome, <%= current_user.name %>!
+      <%= link_to "Settings", settings_path %>
       <%= link_to "Logout", signout_path, method: "delete" %>
     <% else %>
       <%= link_to "Login", signin_path %>

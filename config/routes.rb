@@ -7,6 +7,8 @@ Polls::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  match :settings, to: 'users#edit'
+
   match :signup, to: 'users#new'
 
   match :signin, to: 'sessions#new'

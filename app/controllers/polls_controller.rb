@@ -16,6 +16,8 @@ class PollsController < ApplicationController
     @poll = Poll.find(params[:id])
     if signed_in?
       @poll_vote = PollVote.find_or_initialize_by_poll_id_and_user_id(params[:id], current_user.id)
+    else
+      @poll_vote = PollVote.new
     end
     respond_to do |format|
       format.html # show.html.erb

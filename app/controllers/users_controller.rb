@@ -34,7 +34,15 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    if signed_in?
+      @user = current_user
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @user }
+      end
+    else
+      redirect_to signin_path
+    end
   end
 
   # POST /users
