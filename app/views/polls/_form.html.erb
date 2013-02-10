@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :question %><br />
-    <%= f.text_area :question %>
+    <%= f.text_field :question %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
@@ -22,7 +22,9 @@
   <%= f.fields_for :poll_options do |builder| %>
     <div class="field">
       <%= builder.label :label %><br />
-      <%= builder.text_area :label %>
+      <%= builder.text_field :label %><br />
+      <%= builder.label :color %><br />
+      <%= builder.text_field :color %>
     </div>
   <% end %>
   <div class="actions">

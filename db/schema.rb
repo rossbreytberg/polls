@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130130042704) do
 
   create_table "poll_options", :force => true do |t|
+    t.integer  "color"
     t.text     "label"
     t.integer  "poll_id"
     t.datetime "created_at", :null => false
