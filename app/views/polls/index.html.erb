@@ -4,16 +4,12 @@
   <tr>
     <th>Question</th>
     <th>User</th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @polls.each do |poll| %>
   <tr>
     <td><%= link_to poll.question, poll %></td>
     <td><%= poll.user.name %></td>
-    <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
-    <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

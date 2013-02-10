@@ -1,7 +1,7 @@
 Polls::Application.routes.draw do
-  resources :polls
+  resources :polls, except: [:edit, :update]
 
-  resources :poll_votes
+  resources :poll_votes, only: [:create, :destroy, :update]
 
   resources :users
 

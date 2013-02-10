@@ -15,9 +15,7 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find(params[:id])
     if signed_in?
-      @poll_vote = PollVote.find_or_create_by_poll_id_and_user_id(params[:id], current_user.id)
-    else
-      @poll_vote = PollVote.new
+      @poll_vote = PollVote.find_or_initialize_by_poll_id_and_user_id(params[:id], current_user.id)
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -56,7 +54,7 @@ class PollsController < ApplicationController
     end
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
+        format.html { redirect_to @poll, notice: "Poll was successfully created." }
         format.json { render json: @poll, status: :created, location: @poll }
       else
         format.html { render action: "new" }
@@ -71,7 +69,7 @@ class PollsController < ApplicationController
     @poll = Poll.find(params[:id])
     respond_to do |format|
       if @poll.update_attributes(params[:poll])
-        format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
+        format.html { redirect_to @poll, notice: "Poll was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -83,13 +81,22 @@ class PollsController < ApplicationController
   # DELETE /polls/1
   # DELETE /polls/1.json
   def destroy
-    @poll = Poll.find(params[:id])
-    @poll.destroy
-
-    respond_to do |format|
-      format.html { redirect_to polls_url }
-      format.json { head :no_content }
+    if signed_in?
+      @poll = Poll.find(params[:id])
+      if current_user.id == @poll.user_id
+        @poll.destroy
+        respond_to do |format|
+          format.html { redirect_to polls_url }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to @poll, alert: "Cannot delete a poll you did not create." }
+          format.json { head :no_content }
+        end
+      end
     end
+
   end
 
 end
