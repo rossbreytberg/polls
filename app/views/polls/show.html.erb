@@ -46,5 +46,5 @@
 
 
 <% if signed_in? && current_user.id == @poll.user_id %>
-  <%= link_to 'Delete', @poll, method: :delete, data: { confirm: 'Are you sure you want to delete this poll?' } %> |
+  <%= link_to 'Delete', @poll, method: :delete, data: { confirm: 'Are you sure you want to delete this poll?' } %>
 <% end %>
