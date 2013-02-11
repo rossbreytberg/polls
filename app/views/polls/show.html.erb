@@ -5,14 +5,16 @@
   <%= @poll.question %>
 </p>
 
-<p>
-  <b>Content:</b>
-  <%= @poll.content %>
-</p>
+<% if !@poll.content.blank? %>
+  <p>
+    <b>Content:</b>
+    <%= @poll.content %>
+  </p>
+<% end %>
 
 <p>
   <b>User:</b>
-  <%= @poll.user.name %>
+  <%= link_to @poll.user.name, @poll.user, rel: "author" %>
 </p>
 
 
@@ -46,5 +48,21 @@
 
 
 <% if signed_in? && current_user.id == @poll.user_id %>
-  <%= link_to 'Delete', @poll, method: :delete, data: { confirm: 'Are you sure you want to delete this poll?' } %>
+  <%= link_to 'Delete Poll', @poll, method: :delete, data: { confirm: 'Are you sure you want to delete this poll?' } %>
+<% end %>
+
+<% if signed_in? %>
+  <%= render 'comments/form' %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <div class="comment" style="border-left: solid 4px <%= comment.color %>">
+    <p>
+      <%= comment.content %>
+    </p>
+    <span>comment by <%= link_to comment.user.name, comment.user, rel: "author" %> at <%= comment.created_at %></span>
+    <% if signed_in? && current_user.id == comment.user.id %>
+       | <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' } %>
+    <% end %>
+  </div>
 <% end %>

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   before_create :create_remember_token
   validates :name, uniqueness: { case_sensitive: false, message: "already in use." }
+  has_many :comments
   has_many :polls
   has_many :poll_votes
   def self.find_by_name(name)

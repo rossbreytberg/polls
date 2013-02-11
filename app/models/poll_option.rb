@@ -1,9 +1,7 @@
 class PollOption < ActiveRecord::Base
   attr_accessible :color, :label, :poll_id
-
   belongs_to :poll
   has_many :poll_votes, dependent: :destroy
-
   before_create :set_default_color
 
   def color
