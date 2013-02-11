@@ -1,4 +1,5 @@
 <%= form_for(@poll) do |f| %>
+
   <% if @poll.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
@@ -20,13 +21,20 @@
     <%= f.text_area :content %>
   </div>
   <%= f.fields_for :poll_options do |builder| %>
-    <div class="field">
-      <%= builder.label :label %><br />
-      <%= builder.text_field :label %><br />
-      <%= builder.label :color %><br />
-      <%= builder.text_field :color %>
-    </div>
+    <fieldset class="poll_option">
+      <legend>Poll Option</legend>
+      <div class="field">
+        <%= builder.label :label %><br />
+        <%= builder.text_field :label %><br />
+      </div>
+      <div class="field">
+        <%= builder.label :color %><br />
+        <%= builder.text_field :color %>
+      </div>
+    </fieldset>
   <% end %>
+  <%= link_to "Add Poll Option", nil, class: "link_to_add_poll_option" %>
+  <%= link_to "Remove Poll Option", nil, class: "link_to_remove_poll_option" %>
   <div class="actions">
     <%= f.submit %>
   </div>
