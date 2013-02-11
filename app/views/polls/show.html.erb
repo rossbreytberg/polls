@@ -41,9 +41,11 @@
         <span style="color: <%= poll_option.color %>"><%= poll_option.label %></span> (<%= poll_option.poll_votes.size %>)
       </p>
     <% end %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <% if signed_in? %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
   <% end %>
 
 
