@@ -11,4 +11,5 @@ class Comment < ActiveRecord::Base
       poll_vote.poll_option.color
     end
   end
+
 end

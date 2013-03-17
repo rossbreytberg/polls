@@ -8,7 +8,7 @@
 
 <% @polls.each do |poll| %>
   <tr>
-    <td><%= link_to poll.question, poll %></td>
+    <td><span class="poll_title"><%= link_to poll.question, poll %></span></td>
     <td><%= poll.user.name %></td>
   </tr>
 <% end %>

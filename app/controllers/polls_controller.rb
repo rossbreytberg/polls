@@ -14,7 +14,12 @@ class PollsController < ApplicationController
   # GET /polls/1.json
   def show
     @poll = Poll.find(params[:id])
-    @comments = Comment.find_all_by_poll_id(params[:id])
+    @comments = Comment.includes(:user).joins(:user => :poll_votes)
+    if params[:filter].blank?
+      @comments = @comments.find_all_by_poll_id(params[:id])
+    else
+      @comments = @comments.where('poll_votes.poll_option_id = ?', params[:filter])
+    end
     if signed_in?
       @comment = Comment.new(poll_id: params[:id], user_id: current_user.id)
       @poll_vote = PollVote.find_or_initialize_by_poll_id_and_user_id(params[:id], current_user.id)
