@@ -14,10 +14,8 @@ class PollsController < ApplicationController
   # GET /polls/1.json
   def show
     @poll = Poll.find(params[:id])
-    @comments = Comment.includes(:user).joins(:user => :poll_votes)
-    if params[:filter].blank?
-      @comments = @comments.find_all_by_poll_id(params[:id])
-    else
+    @comments = Comment.includes(:user).joins(:user => :poll_votes).where('comments.poll_id = poll_votes.poll_id AND comments.poll_id = ?', params[:id])
+    if params[:filter].present?
       @comments = @comments.where('poll_votes.poll_option_id = ?', params[:filter])
     end
     if signed_in?
