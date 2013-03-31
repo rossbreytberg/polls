@@ -57,7 +57,7 @@
   <%= render 'comments/form' %>
 <% end %>
 
-<%= select_tag "", options_from_collection_for_select(@poll.poll_options, "id", "label") %>
+<%= select_tag "filter", options_from_collection_for_select(@poll.poll_options, "id", "label", params[:filter]), prompt: 'All' %>
 
 <% @comments.each do |comment| %>
   <div class="comment" style="border-left: solid 4px <%= comment.color %>">

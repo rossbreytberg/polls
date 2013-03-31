@@ -35,7 +35,14 @@ function remove_poll_option() {
   return false;
 }
 
+function on_filter_change() {
+  var filter = $(this).val();
+  var query = filter ? '?filter=' + filter : '';
+  window.location.search = query;
+}
+
 $(document).ready(function() {
   $('.link_to_add_poll_option').click(add_poll_option);
   $('.link_to_remove_poll_option').click(remove_poll_option);
+  $('#filter').bind('change', on_filter_change);
 });
