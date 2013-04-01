@@ -1,38 +1,49 @@
+a {
+  color: #333;
+  &:visited {
+    color: #888;
+  }
+  &:hover {
+    color: #00a0ff;
+  }
+}
+
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: helvetica, arial, verdana, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+fieldset {
+  border: none;
+  border-top: solid 1px #ccc;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
+input[type="submit"] {
+  background-color: #ccc;
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  font-weight: bold;
+  &:active:hover, &:focus:hover {
+    background-color: rgb(5, 133, 209);
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    background-color: #00a0ff;
   }
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+input[type="text"] {
+  border: solid 1px #ccc;
+  border-radius: 3px;
+}
+
+textarea {
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  height: 100px;
+  width: 500px;
 }
 
 #notice {
