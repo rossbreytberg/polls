@@ -5,6 +5,5 @@ class PollVote < ActiveRecord::Base
   belongs_to :user
   validates :poll_id, uniqueness: { scope: :user_id }
   validates :poll_id, presence: true
-  validates :poll_option_id, presence: true
   validates :user_id, presence: true
 end

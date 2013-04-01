@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
 
   def color
     poll_vote = PollVote.find_by_poll_id_and_user_id(self.poll_id, self.user_id)
-    if !poll_vote.nil?
+    if poll_vote.present? && poll_vote.poll_option.present?
       poll_vote.poll_option.color
     end
   end

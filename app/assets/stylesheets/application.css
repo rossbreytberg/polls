@@ -12,11 +12,6 @@
  *= require_tree .
  */
 
- header {
- 	background: #fff;
-  border-bottom: solid 1px #333;
- }
-
 #logo {
   width: 100px;
   height: auto;

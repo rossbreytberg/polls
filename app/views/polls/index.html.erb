@@ -1,18 +1,13 @@
-<table>
-  <tr>
-    <th>Question</th>
-    <th>User</th>
-  </tr>
-
-<% @polls.each do |poll| %>
-  <tr>
-    <td><span class="poll_title"><%= link_to poll.question, poll %></span></td>
-    <td><%= poll.user.name %></td>
-  </tr>
-<% end %>
-</table>
+<ol class="poll_index">
+  <% @polls.each do |poll| %>
+    <li>
+      <%= link_to poll.question, poll %>
+    </li>
+  <% end %>
+</ol>
 
 <br />
+
 <% if signed_in? %>
   <%= link_to 'New Poll', new_poll_path %>
 <% end %>

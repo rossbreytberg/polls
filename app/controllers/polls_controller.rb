@@ -21,6 +21,7 @@ class PollsController < ApplicationController
     if signed_in?
       @comment = Comment.new(poll_id: params[:id], user_id: current_user.id)
       @poll_vote = PollVote.find_or_initialize_by_poll_id_and_user_id(params[:id], current_user.id)
+      @poll_vote.save
     else
       @comment = Comment.new
       @poll_vote = PollVote.new
