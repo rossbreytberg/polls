@@ -12,11 +12,11 @@ Polls::Application.routes.draw do
 
   match :settings, to: 'users#edit'
 
-  match :signup, to: 'users#new'
+  match :register, to: 'users#new'
 
-  match :signin, to: 'sessions#new'
+  match :login, to: 'sessions#new'
 
-  match :signout, to: 'sessions#destroy', via: :delete
+  match :logout, to: 'sessions#destroy', via: :delete
 
   root :to => 'polls#index'
 

@@ -2,12 +2,12 @@
   <%= link_to image_tag("/assets/polls.png", id: "logo"), "/" %>
   <nav>
     <% if signed_in? %>
-      Welcome, <%= current_user.name %>!
+      <%= current_user.name %>:
       <%= link_to "Settings", settings_path %>
-      <%= link_to "Logout", signout_path, method: "delete" %>
+      <%= link_to "Logout", logout_path, method: "delete" %>
     <% else %>
-      <%= link_to "Login", signin_path %>
-      <%= link_to "Register", signup_path %>
+      <%= link_to "Login", login_path %>
+      <%= link_to "Register", register_path %>
     <% end %>
   </nav>
 </header>

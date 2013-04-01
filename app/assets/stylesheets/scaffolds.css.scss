@@ -24,7 +24,9 @@ fieldset {
 header {
   background: #fff;
   border-bottom: solid 1px #333;
+  line-height: 25px;
   margin-bottom: 25px;
+  position: relative;
  }
 
 input[type="submit"] {
@@ -47,6 +49,22 @@ input[type="text"] {
 
 li {
   margin: 10px;
+}
+
+nav {
+  display: inline;
+  right: 0px;
+  position: absolute;
+}
+
+nav a {
+  color: #333;
+  &:visited {
+    color: #333;
+  }
+  &:hover {
+    color: #00a0ff;
+  }
 }
 
 ol {
