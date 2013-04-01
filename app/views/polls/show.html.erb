@@ -1,28 +1,24 @@
 <p id="notice"><%= notice %></p>
 <p id="alert"><%= alert %></p>
 <p>
-  <b>Question:</b>
-  <%= @poll.question %>
+  <h1><%= @poll.question %></h1>
+</p>
+
+<p>
+  Poll by <%= link_to @poll.user.name, @poll.user, rel: "author" %>
 </p>
 
 <% if !@poll.content.blank? %>
   <p>
-    <b>Content:</b>
     <%= @poll.content %>
   </p>
 <% end %>
-
-<p>
-  <b>User:</b>
-  <%= link_to @poll.user.name, @poll.user, rel: "author" %>
-</p>
 
 
   <%= form_for(@poll_vote) do |f| %>
     <% if @poll_vote.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@poll_vote.errors.count, "error") %> prohibited this poll_vote from being saved:</h2>
-
         <ul>
         <% @poll_vote.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -32,7 +28,6 @@
     <% end %>
     <%= f.hidden_field :poll_id, value: @poll_vote.poll_id %>
     <%= f.hidden_field :user_id, value: @poll_vote.user_id %>
-    <%= f.label :poll_option_id %>
     <% @poll.poll_options.each do |poll_option| %>
       <p>
         <% if signed_in? %>

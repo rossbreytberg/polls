@@ -12,7 +12,7 @@
   <% end %>
   <%= f.hidden_field :poll_id, value: @comment.poll_id %>
   <%= f.hidden_field :user_id, value: @comment.user_id %>
-  <div class="field">
+  <div class="field comment">
     <%= f.label "Comment" %><br />
     <%= f.text_area :content %>
   </div>
