@@ -2,12 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
+h1.poll_title {
   margin-bottom: 3px;
 }
 
-h5 {
+.subtitle {
   color: #aaa;
+  display: block;
+  font-size: 11px;
   font-weight: lighter;
   margin: 2px;
 }
@@ -32,13 +34,21 @@ h5 {
   font-size: 20px;
 }
 
-.poll_index a {
+.poll_index .poll_title a {
   color: #333;
   text-decoration: none;
   &:visited {
-    color: #ccc;
+    color: #aaa;
   }
   &:hover {
     color: #00a0ff;
   }
+}
+
+.poll_option {
+  margin: 4px;
+}
+
+.poll_title {
+  display: block;
 }

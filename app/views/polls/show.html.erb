@@ -1,5 +1,5 @@
-<h1><%= @poll.question %></h1>
-<h5>Asked <%= time_ago_in_words(@poll.created_at) %> ago by <%= link_to @poll.user.name, @poll.user, rel: "author" %></h5>
+<h1 class="poll_title"><%= @poll.question %></h1>
+<span class="subtitle">Asked <%= time_ago_in_words(@poll.created_at) %> ago by <%= link_to @poll.user.name, @poll.user, rel: "author" %></span>
 
 <% if !@poll.content.blank? %>
   <%= @poll.content %>
@@ -19,31 +19,31 @@
   <%= f.hidden_field :poll_id, value: @poll_vote.poll_id %>
   <%= f.hidden_field :user_id, value: @poll_vote.user_id %>
   <% @poll.poll_options.each do |poll_option| %>
-    <p>
+    <div class="poll_option">
       <% if signed_in? %>
         <%= f.radio_button :poll_option_id, poll_option.id %>
       <% end %>
       <span style="color: <%= poll_option.color %>"><%= poll_option.label %></span> (<%= poll_option.poll_votes.size %>)
-    </p>
+    </div>
   <% end %>
   <% if signed_in? %>
     <div class="actions">
-      <%= f.submit 'Vote' %>
+      <%= f.submit "Vote" %>
     </div>
   <% end %>
 <% end %>
 
 
 <% if signed_in? && current_user.id == @poll.user_id %>
-  <%= link_to 'Delete Poll', @poll, method: :delete, data: { confirm: 'Are you sure you want to delete this poll?' } %>
+  <%= button_to "Delete Poll", @poll, class: "delete_button", method: :delete , data: { confirm: "Are you sure you want to delete this poll?" } %>
 <% end %>
 
 <% if signed_in? %>
-  <%= render 'comments/form' %>
+  <%= render "comments/form" %>
 <% end %>
 
 <% if @comments.present? %>
-  <%= select_tag "filter", options_from_collection_for_select(@poll.poll_options, "id", "label", params[:filter]), prompt: 'All' %>
+  <%= select_tag "filter", options_from_collection_for_select(@poll.poll_options, "id", "label", params[:filter]), prompt: "All" %>
 <% end %>
 
 <% @comments.each do |comment| %>
@@ -51,11 +51,11 @@
     <p>
       <%= comment.content %>
     </p>
-    <h5>
+    <span class="subtitle">
       Posted <%= time_ago_in_words(comment.created_at) %> ago by <%= link_to comment.user.name, comment.user, rel: "author" %>
       <% if signed_in? && current_user.id == comment.user.id %>
-         | <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' } %>
+         | <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
       <% end %>
-    </h5>
+    </span>
   </div>
 <% end %>

@@ -1,7 +1,12 @@
 <ol class="poll_index">
   <% @polls.each do |poll| %>
     <li>
-      <%= link_to poll.question, poll %>
+      <span class="poll_title">
+        <%= link_to poll.question, poll %>
+      </span>
+      <span class="subtitle">
+        Asked <%= time_ago_in_words(poll.created_at) %> ago by <%= link_to poll.user.name, poll.user, rel: "author" %>
+      </span>
     </li>
   <% end %>
 </ol>
