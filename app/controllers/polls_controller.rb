@@ -47,11 +47,6 @@ class PollsController < ApplicationController
     end
   end
 
-  # GET /polls/1/edit
-  def edit
-    @poll = Poll.find(params[:id])
-  end
-
   # POST /polls
   # POST /polls.json
   def create
@@ -63,25 +58,10 @@ class PollsController < ApplicationController
     end
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, notice: "Poll was successfully created." }
+        format.html { redirect_to @poll }
         format.json { render json: @poll, status: :created, location: @poll }
       else
         format.html { render action: "new" }
-        format.json { render json: @poll.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /polls/1
-  # PUT /polls/1.json
-  def update
-    @poll = Poll.find(params[:id])
-    respond_to do |format|
-      if @poll.update_attributes(params[:poll])
-        format.html { redirect_to @poll, notice: "Poll was successfully updated." }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
         format.json { render json: @poll.errors, status: :unprocessable_entity }
       end
     end
@@ -105,7 +85,6 @@ class PollsController < ApplicationController
         end
       end
     end
-
   end
 
 end

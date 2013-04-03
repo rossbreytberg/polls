@@ -12,30 +12,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
+  <%= f.text_field :question, placeholder: "Question" %>
+  <%= f.text_area :content, placeholder: "Description" %>
   <%= f.fields_for :poll_options do |builder| %>
     <fieldset class="poll_option">
-      <legend>Poll Option</legend>
-      <div class="field">
-        <%= builder.label :label %><br />
-        <%= builder.text_field :label %><br />
-      </div>
-      <div class="field">
-        <%= builder.label :color %><br />
-        <%= builder.text_field :color %>
-      </div>
+      <legend>Option</legend>
+        <%= builder.text_field :label, placeholder: "Label" %>
+        <%= builder.text_field :color, placeholder: "Color (hex)" %>
     </fieldset>
   <% end %>
-  <%= link_to "Add Poll Option", "#", class: "link_to_add_poll_option" %>
-  <%= link_to "Remove Poll Option", "#", class: "link_to_remove_poll_option" %>
-  <div class="actions">
+    <%= button_tag "+", class: "link_to_add_poll_option" %>
+    <%= button_tag "-", class: "link_to_remove_poll_option" %>
     <%= f.submit %>
-  </div>
 <% end %>

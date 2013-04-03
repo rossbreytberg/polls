@@ -6,8 +6,6 @@
   <% end %>
 </ol>
 
-<br />
-
 <% if signed_in? %>
-  <%= link_to 'New Poll', new_poll_path %>
+  <%= button_to "New Poll", new_poll_path, { class: "new_poll_button", method: "get" } %>
 <% end %>
