@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.comment {
+  border-radius: 5px;
+  border-top: solid 1px #e0e0e0;
+  padding: 5px;
+}
+
 .field.comment {
   margin: 0px; 
 }

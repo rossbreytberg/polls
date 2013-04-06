@@ -1,4 +1,4 @@
-<h1 class="poll_title"><%= @poll.question %></h1>
+<h1 class="subtitled_title"><%= @poll.question %></h1>
 <span class="subtitle">Asked <%= time_ago_in_words(@poll.created_at) %> ago by <%= link_to @poll.user.name, @poll.user, rel: "author" %></span>
 
 <% if !@poll.content.blank? %>

@@ -23,10 +23,11 @@ button, input[type="button"], input[type="submit"] {
   cursor: pointer;
   font-weight: bold;
   margin: 2px 0px 2px 0px;
+  outline-style: none;
   &:active:hover, &:focus:hover {
     background-color: rgb(5, 133, 209);
   }
-  &:hover {
+  &:focus, &:hover {
     background-color: #00a0ff;
   }
 }
@@ -47,16 +48,22 @@ header {
 input[type="password"], input[type="text"], textarea {
   border: solid 1px #ccc;
   border-radius: 3px;
+  color: #333;
   display: block;
   font-size: 13px;
   margin-bottom: 4px;
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 4px;
+  outline-style: none;
   padding-bottom: 4px;
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 4px;
+}
+
+input[type="password"]:focus, input[type="text"]:focus, textarea:focus {
+  border-color: #333;
 }
 
 input[type="submit"] {

@@ -41,7 +41,7 @@ class UsersController < ApplicationController
         format.json { render json: @user }
       end
     else
-      redirect_to signin_path
+      redirect_to root_path
     end
   end
 
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in(@user)
-        format.html { redirect_to "/" }
+        format.html { redirect_to root_path }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

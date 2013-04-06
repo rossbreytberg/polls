@@ -1,7 +1,7 @@
 <ol class="poll_index">
   <% @polls.each do |poll| %>
     <li>
-      <span class="poll_title">
+      <span class="subtitled_title poll_title">
         <%= link_to poll.question, poll %>
       </span>
       <span class="subtitle">

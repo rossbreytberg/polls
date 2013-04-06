@@ -43,7 +43,7 @@ class PollsController < ApplicationController
         format.json { render json: @poll }
       end
     else
-      redirect_to "/signin"
+      redirect_to login_path
     end
   end
 
