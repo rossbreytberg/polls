@@ -18,10 +18,10 @@
     <fieldset class="poll_option">
       <legend>Option</legend>
         <%= builder.text_field :label, placeholder: "Label" %>
-        <%= builder.text_field :color, placeholder: "Color (hex)" %>
+        <%= builder.text_field :color, class: "color_input", placeholder: "Click to choose a color", readonly: "true" %>
     </fieldset>
   <% end %>
-    <%= button_tag "+", class: "link_to_add_poll_option" %>
-    <%= button_tag "-", class: "delete_button link_to_remove_poll_option" %>
+    <%= button_tag "+", class: "link_to_add_poll_option", type: "button" %>
+    <%= button_tag "-", class: "delete_button link_to_remove_poll_option", type: "button" %>
     <%= f.submit %>
 <% end %>
