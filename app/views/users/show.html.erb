@@ -1,3 +1,5 @@
+<% provide(:title, @user.name) %>
+
 <h1 class="subtitled_title"><%= @user.name %></h1>
 <span class="subtitle">Joined <%= time_ago_in_words @user.created_at %> ago</span>
 
