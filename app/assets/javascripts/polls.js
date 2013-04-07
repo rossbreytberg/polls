@@ -8,7 +8,7 @@ function on_color_select(hex) {}
 function show_colorpicker(event) {
   on_color_select = function(hex) {
     var color_input = $(event.target);
-    color_input.css('color', hex).val(hex);
+    color_input.css('background', hex);
   };
   var colorpicker = $('#colorpicker');
   var x_offset = colorpicker.outerWidth() / 2;
