@@ -18,14 +18,7 @@
 }
 
 .poll_index .poll_title a {
-  color: #333;
   text-decoration: none;
-  &:visited {
-    color: #aaa;
-  }
-  &:hover {
-    color: #00a0ff;
-  }
 }
 
 .poll_option {

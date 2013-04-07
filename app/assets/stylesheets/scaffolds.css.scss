@@ -1,10 +1,20 @@
-a {
+a, a:visited {
   color: #333;
-  &:visited {
-    color: #333;
+  outline-style: none;
+  &:active, &:active:hover {
+    color: #0585d1;
   }
-  &:hover {
+  &:focus, &:hover {
     color: #00a0ff;
+  }
+}
+
+a:focus img {
+  border: solid 1px #00a0ff;
+  border-radius: 3px;
+  box-sizing: border-box;
+  &:active, &:active:hover {
+    color: transparent;
   }
 }
 
@@ -24,8 +34,8 @@ button, input[type="button"], input[type="submit"] {
   font-weight: bold;
   margin: 2px 0px 2px 0px;
   outline-style: none;
-  &:active:hover, &:focus:hover {
-    background-color: rgb(5, 133, 209);
+  &:active, &:active:hover {
+    background-color: #0585d1;
   }
   &:focus, &:hover {
     background-color: #00a0ff;
@@ -45,7 +55,7 @@ header {
   position: relative;
  }
 
-input[type="password"], input[type="text"], textarea {
+input[type="password"], input[type="text"], select, textarea {
   border: solid 1px #ccc;
   border-radius: 3px;
   color: #333;
@@ -60,10 +70,9 @@ input[type="password"], input[type="text"], textarea {
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 4px;
-}
-
-input[type="password"]:focus, input[type="text"]:focus, textarea:focus {
-  border-color: #333;
+  &:focus {
+    border-color: #00a0ff;
+  }
 }
 
 input[type="submit"] {
@@ -95,7 +104,7 @@ nav a {
   &:visited {
     color: #333;
   }
-  &:hover {
+  &:focus, &:hover {
     color: #00a0ff;
   }
 }
