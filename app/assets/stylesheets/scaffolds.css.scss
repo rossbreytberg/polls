@@ -70,6 +70,7 @@ input[type="password"], input[type="text"], select, textarea {
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 4px;
+  width: 200px;
   &:focus {
     border-color: #00a0ff;
   }
@@ -109,6 +110,10 @@ nav a {
   }
 }
 
+nav strong a {
+  text-decoration: none;
+}
+
 ol {
   margin: 0px;
   padding: 0px;
@@ -119,27 +124,22 @@ textarea {
   width: 500px;
 }
 
-#container {
-  margin-left: 50px;
+button.delete_button, input[type="button"].delete_button, input[type="submit"].delete_button {
+  &:active, &:active:hover {
+    background-color: #c64946;
+  }
+  &:focus, &:hover {
+    background-color: #f55a57;
+  }
 }
 
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
+.error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: solid 1px #c64946;
+  border-radius: 3px;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
   h2 {
     text-align: left;
     font-weight: bold;
@@ -154,4 +154,26 @@ textarea {
     font-size: 12px;
     list-style: square;
   }
+}
+
+.subtitle {
+  color: #aaa;
+  display: block;
+  font-size: 11px;
+  font-weight: lighter;
+  margin: 2px;
+}
+
+.subtitled_title {
+  margin-bottom: 3px;
+}
+
+#container {
+  margin-left: 50px;
+  position: relative;
+}
+
+#logo {
+  width: auto;
+  height: 25px;
 }

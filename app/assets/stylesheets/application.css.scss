@@ -11,33 +11,4 @@
  *= require_self
  *= require_tree .
  */
-
-#container {
-  position: relative;
-}
-
-#logo {
-  width: auto;
-  height: 25px;
-}
-
-button.delete_button, input[type="button"].delete_button, input[type="submit"].delete_button {
-  &:active, &:active:hover {
-    background-color: #c64946;
-  }
-  &:focus, &:hover {
-    background-color: #f55a57;
-  }
-}
-
-.subtitle {
-  color: #aaa;
-  display: block;
-  font-size: 11px;
-  font-weight: lighter;
-  margin: 2px;
-}
-
-.subtitled_title {
-  margin-bottom: 3px;
-}
+ 

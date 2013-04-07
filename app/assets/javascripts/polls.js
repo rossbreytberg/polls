@@ -6,9 +6,16 @@ var poll_option_count = 2;
 function on_color_select(hex) {}
 
 function show_colorpicker(event) {
+  if ($('#colorpicker').children().length === 0) {
+    ColorPicker(document.getElementById('colorpicker'), function(hex) {
+      on_color_select(hex);
+    });
+  }
   on_color_select = function(hex) {
     var color_input = $(event.target);
+    var color_hidden_input = color_input.parent().find('.color_hidden_input');
     color_input.css('background', hex);
+    color_hidden_input.val(hex);
   };
   var colorpicker = $('#colorpicker');
   var x_offset = colorpicker.outerWidth() / 2;
@@ -62,9 +69,8 @@ function on_filter_change() {
 }
 
 $(document).ready(function() {
-  ColorPicker(document.getElementById('colorpicker'), function(hex) {
-    on_color_select(hex);
-  });
+  // clear hidden input values because they are incorrect
+  $('.color_hidden_input').each(function(index) { $(this).val(''); });
   $('#colorpicker').click(function(e) {e.stopPropagation();});
   $('.color_input').click(show_colorpicker);
   $('.link_to_add_poll_option').click(add_poll_option);

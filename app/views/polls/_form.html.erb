@@ -1,9 +1,8 @@
 <%= form_for(@poll) do |f| %>
 
   <% if @poll.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
-
+    <div class="error_explanation">
+      <h2><%= pluralize(@poll.errors.count, "error") %> must be corrected before you can create this poll:</h2>
       <ul>
       <% @poll.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -18,7 +17,8 @@
     <fieldset class="poll_option">
       <legend>Option</legend>
         <%= builder.text_field :label, placeholder: "Label" %>
-        <%= builder.text_field :color, class: "color_input", placeholder: "Click to choose a color", readonly: "true" %>
+        <%= text_field_tag :color, nil, class: "color_input", placeholder: "Click to choose a color", readonly: "true" %>
+        <%= builder.hidden_field :color, class: "color_hidden_input" %>
     </fieldset>
   <% end %>
     <%= button_tag "+", class: "link_to_add_poll_option", type: "button" %>

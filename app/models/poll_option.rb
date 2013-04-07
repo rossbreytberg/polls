@@ -2,18 +2,20 @@ class PollOption < ActiveRecord::Base
   attr_accessible :color, :label, :poll_id
   belongs_to :poll
   has_many :poll_votes, dependent: :destroy
-  before_create :set_default_color
+  validates :color, presence: { message: "was left blank!" }
+  validates :label, presence: { message: "was left blank!" }
 
   def color
-    "#%06x" % read_attribute(:color)
+    color = read_attribute(:color)
+    if color.present?
+      "#%06x" % color
+    end
   end
 
   def color=(color)
-    write_attribute :color, color[1..-1].to_i(16)
+    if color.present?
+      write_attribute :color, color[1..-1].to_i(16)
+    end
   end
 
-  private
-    def set_default_color
-      self.color ||= 0
-    end
 end

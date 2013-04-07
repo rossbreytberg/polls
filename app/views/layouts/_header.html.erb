@@ -2,7 +2,7 @@
   <%= link_to image_tag("/assets/polls.png", id: "logo"), root_path %>
   <nav>
     <% if signed_in? %>
-      <strong><%= link_to current_user.name, current_user %></strong>
+      <strong><%= link_to current_user.name, current_user %>:</strong>
       <%= link_to "Settings", settings_path %>
       <%= link_to "Logout", logout_path, method: "delete" %>
     <% else %>
