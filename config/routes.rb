@@ -10,9 +10,11 @@ Polls::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  match :settings, to: 'users#edit'
+  match :settings, to: 'users#edit', via: :get
 
-  match :register, to: 'users#new'
+  match :register, to: 'users#new', via: :get
+
+  match :register, to: 'users#create', via: :put
 
   match :login, to: 'sessions#new'
 

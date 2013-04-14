@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    puts "NEWNEWNEWNEWNEW"
     @user = User.new
 
     respond_to do |format|
@@ -38,14 +39,17 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts "BBBBBBBBB"
     @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
+        puts "AAAAA"
         sign_in(@user)
         format.html { redirect_to root_path }
         format.json { render json: @user, status: :created, location: @user }
       else
+        puts "BLAHBLAHBLAH"
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

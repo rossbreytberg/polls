@@ -19,6 +19,7 @@
         <%= builder.text_field :label, placeholder: "Label" %>
         <%= text_field_tag :color, nil, class: "color_input", placeholder: "Click to choose a color", readonly: "true" %>
         <%= builder.hidden_field :color, class: "color_hidden_input" %>
+        <%= builder.text_field :url, placeholder: "URL (optional)" %>
     </fieldset>
   <% end %>
     <%= button_tag "+", class: "link_to_add_poll_option", type: "button" %>

@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130211025726) do
     t.integer  "color"
     t.text     "label"
     t.integer  "poll_id"
+    t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

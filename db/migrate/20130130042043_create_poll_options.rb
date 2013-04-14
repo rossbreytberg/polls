@@ -4,6 +4,7 @@ class CreatePollOptions < ActiveRecord::Migration
       t.integer :color
       t.text :label
       t.references :poll
+      t.string :url
 
       t.timestamps
     end

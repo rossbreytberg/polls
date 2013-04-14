@@ -25,7 +25,12 @@
       <% if signed_in? %>
         <%= f.radio_button :poll_option_id, poll_option.id %>
       <% end %>
-      <span style="color: <%= poll_option.color %>"><%= poll_option.label %></span> (<%= poll_option.poll_votes.size %>)
+      <% if poll_option.url.present? %>
+        <a href="<%= poll_option.url %>"><%= poll_option.label %></a>
+      <% else %>
+        <%= poll_option.label %>
+      <% end %>
+      (<span style="color: <%= poll_option.color %>"><%= poll_option.poll_votes.size %></span>)
     </div>
   <% end %>
   <% if signed_in? %>
