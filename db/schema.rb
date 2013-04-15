@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20130211025726) do
   end
 
   create_table "poll_options", :force => true do |t|
-    t.integer  "color"
+    t.string   "color"
     t.text     "label"
     t.integer  "poll_id"
     t.string   "url"

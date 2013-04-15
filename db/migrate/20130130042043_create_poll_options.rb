@@ -1,7 +1,7 @@
 class CreatePollOptions < ActiveRecord::Migration
   def change
     create_table :poll_options do |t|
-      t.integer :color
+      t.string :color
       t.text :label
       t.references :poll
       t.string :url

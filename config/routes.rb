@@ -12,9 +12,11 @@ Polls::Application.routes.draw do
 
   match :settings, to: 'users#edit', via: :get
 
+  match :settings, to: 'users#update', via: :put
+
   match :register, to: 'users#new', via: :get
 
-  match :register, to: 'users#create', via: :put
+  match :register, to: 'users#create', via: :post
 
   match :login, to: 'sessions#new'
 

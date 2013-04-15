@@ -2,25 +2,33 @@
 // All this logic will automatically be available in application.js.
 
 var poll_option_count = 2;
+var colorpicker = null;
 
 function on_color_select(hex) {}
 
 function show_colorpicker(event) {
-  if ($('#colorpicker').children().length === 0) {
-    ColorPicker(document.getElementById('colorpicker'), function(hex) {
+  var colorpicker_element = $('#colorpicker');
+  if (colorpicker_element.children().length === 0) {
+    colorpicker = ColorPicker(colorpicker_element.get(0), function(hex) {
       on_color_select(hex);
     });
   }
+  var color_input = $(event.target);
+  var color_hidden_input = color_input.parent().find('.color_hidden_input');
   on_color_select = function(hex) {
-    var color_input = $(event.target);
-    var color_hidden_input = color_input.parent().find('.color_hidden_input');
     color_input.css('background', hex);
     color_hidden_input.val(hex);
   };
-  var colorpicker = $('#colorpicker');
-  var x_offset = colorpicker.outerWidth() / 2;
-  var y_offset = colorpicker.outerHeight() / 2;
-  $('#colorpicker').css({'left': event.pageX - x_offset, 'top': event.pageY - y_offset }).show();
+  if (color_hidden_input.val()) {
+    colorpicker.setHex(color_hidden_input.val());
+  } else {
+    colorpicker.setHex('#fff');
+  }
+  var parent_offset = colorpicker_element.parent().offset();
+  var x_offset = parent_offset.left + colorpicker_element.outerWidth() / 2;
+  var y_offset = parent_offset.top + colorpicker_element.outerHeight() / 2;
+  console.log(event.pageX, x_offset, parent_offset.left);
+  colorpicker_element.css({'left': event.pageX - x_offset, 'top': event.pageY - y_offset }).show();
   $(document).click(hide_colorpicker);
   return false;
 }
@@ -33,6 +41,7 @@ function hide_colorpicker() {
 function add_poll_option() {
   var poll_options = $('.poll_option');
   var new_poll_option = poll_options.first().clone().addClass('removable_poll_option');
+  new_poll_option.find('.color_input').css('background', 'none');
   function update_attribute_number(element, attribute) {
     var new_attribute_value = $(element).attr(attribute).replace('0', poll_option_count);
     $(element).attr(attribute, new_attribute_value);
@@ -50,6 +59,9 @@ function add_poll_option() {
   poll_options.last().after(new_poll_option);
   $(document).scrollTop(new_poll_option.offset().top);
   poll_option_count++;
+  // rebind event to pop up color picker since now there are more color inputs
+  $('.color_input').unbind('click', show_colorpicker);
+  $('.color_input').click(show_colorpicker);
   return false;
 }
 
@@ -69,8 +81,6 @@ function on_filter_change() {
 }
 
 $(document).ready(function() {
-  // clear hidden input values because they are incorrect
-  $('.color_hidden_input').each(function(index) { $(this).val(''); });
   $('#colorpicker').click(function(e) {e.stopPropagation();});
   $('.color_input').click(show_colorpicker);
   $('.link_to_add_poll_option').click(add_poll_option);
